@@ -1,0 +1,21 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Employee</td>
+            <td>Designation</td>
+            <td>Salary</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="employee in employees">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name.first}} {{employee.name.middle}} {{employee.name.last}}</td>
+            <td>{{employee.designation}}</td>
+            <td>{{employee.salary | currency}}</td>
+            <td>(add) (edit) (delete)</td>
+        </tr>
+    </tbody>
+</table>
+
