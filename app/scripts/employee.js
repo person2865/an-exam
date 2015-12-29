@@ -9,7 +9,12 @@ employeeApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'scripts/employee/table.template.html',
             controller: 'EmployeeMainController'
         })
-        /*.state('edit', {
-
-        })*/;
+        .state('home.edit', {
+            url: '/edit',
+            params: {
+                employeeId: -1
+            },
+            templateUrl: 'scripts/employee/edit.template.html',
+            controller: 'EmployeeAddEditController'
+        });
 });

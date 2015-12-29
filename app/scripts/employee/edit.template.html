@@ -1,0 +1,76 @@
+<div>
+
+    <h2>{{heading}}</h2>
+
+    <div class="notification-panel">
+        <p ng-if="formInvalid" class="bg-danger">Test test test</p>
+    </div>
+
+    <form name="employeeForm" ng-submit="submitEmployee()">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="first-name">First Name *</label>
+                <input ng-model="employee.name.first" type="text" class="form-control" id="first-name" placeholder="First name">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="middle-name">Middle Name</label>
+                <input ng-model="employee.name.middle" type="text" class="form-control" id="middle-name" placeholder="Middle name (optional)">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="last-name">Last Name *</label>
+                <input ng-model="employee.name.last" type="text" class="form-control" id="last-name" placeholder="Last name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="age">Age *</label>
+                <input ng-model="employee.age" type="number" class="form-control" id="age" placeholder="Age">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="designation">Designation *</label>
+                <select ng-model="employee.designation"
+                        ng-options="item as item for item in designations"
+                        class="form-control"
+                        id="designation">
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="salary">Salary *</label>
+                <input ng-model="employee.salary" type="number" class="form-control" id="salary" placeholder="Salary">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit"
+                        class="btn btn-primary">
+                            Submit
+                </button>&nbsp;
+
+                <a class="btn btn-default"
+                    role="button"
+                    alt="Reset Form"
+                    ng-click="loadEmployee()">
+                        Reset
+                </a>
+                
+            </div>
+            <div class="col-md-4 col-md-offset-4 text-right">
+                <a class="btn btn-danger"
+                    href="#"
+                    role="button"
+                    alt="Call add new employee">
+                        Cancel
+                </a>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+{{employee | json}}
+
+<br>
+
+{{employees | json}}

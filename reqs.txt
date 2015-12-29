@@ -45,7 +45,7 @@ The user can change the values and then on submitting the new values should refl
 
 On clicking the delete button the row should be deleted from the table.
 
-Use factories and services to get the data which much not be hard coded in the application (models/views/controllers). It has to be retrieved by json objects. The data can come from a text file also and upon changing the data in external location the application should have the changed data.
+Use factories and services to get the data which must not be hard coded in the application (models/views/controllers). It has to be retrieved by json objects. The data can come from a text file also and upon changing the data in external location the application should have the changed data.
 
 Use partial views/templates for the view.
 
