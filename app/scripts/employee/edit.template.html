@@ -6,31 +6,36 @@
         <p ng-if="formInvalid" class="bg-danger">Test test test</p>
     </div>
 
-    <form name="employeeForm" ng-submit="submitEmployee()">
+    <form name="employeeForm" ng-submit="submitEmployee()" novalidate>
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="first-name">First Name *</label>
-                <input ng-model="employee.name.first" type="text" class="form-control" id="first-name" placeholder="First name">
+                <input ng-model="employeeFormModel.name.first"
+                       type="text"
+                       class="form-control"
+                       id="first-name"
+                       placeholder="First name"
+                       required>
             </div>
             <div class="form-group col-md-4">
                 <label for="middle-name">Middle Name</label>
-                <input ng-model="employee.name.middle" type="text" class="form-control" id="middle-name" placeholder="Middle name (optional)">
+                <input ng-model="employeeFormModel.name.middle" type="text" class="form-control" id="middle-name" placeholder="Middle name (optional)">
             </div>
             <div class="form-group col-md-4">
                 <label for="last-name">Last Name *</label>
-                <input ng-model="employee.name.last" type="text" class="form-control" id="last-name" placeholder="Last name">
+                <input ng-model="employeeFormModel.name.last" type="text" class="form-control" id="last-name" placeholder="Last name">
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="age">Age *</label>
-                <input ng-model="employee.age" type="number" class="form-control" id="age" placeholder="Age">
+                <input ng-model="employeeFormModel.age" type="number" class="form-control" id="age" placeholder="Age">
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="designation">Designation *</label>
-                <select ng-model="employee.designation"
+                <select ng-model="employeeFormModel.designation"
                         ng-options="item as item for item in designations"
                         class="form-control"
                         id="designation">
@@ -38,7 +43,14 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="salary">Salary *</label>
-                <input ng-model="employee.salary" type="number" class="form-control" id="salary" placeholder="Salary">
+                <input ng-model="employeeFormModel.salary"
+                       type="number"
+                       class="form-control"
+                       id="salary"
+                       placeholder="Salary"
+                       ng-min="30000"
+                       ng-max="80000"
+                       required>
             </div>
         </div>
         <div class="row">
@@ -51,7 +63,7 @@
                 <a class="btn btn-default"
                     role="button"
                     alt="Reset Form"
-                    ng-click="loadEmployee()">
+                    ng-click="resetForm()">
                         Reset
                 </a>
                 
@@ -68,9 +80,9 @@
         
     </form>
 </div>
-
-{{employee | json}}
-
 <br>
-
-{{employees | json}}
+EmployeeFormModel = {{ employeeFormModel | json }}
+<br>
+Employee = {{ employee | json }}
+<br>
+Employee List = {{ employees | json }}
