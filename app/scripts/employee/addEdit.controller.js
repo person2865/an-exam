@@ -16,9 +16,8 @@ angular.module('employeeApp')
 
       $scope.resetForm = function () {
         $scope.employee = EmployeeService.getEmployeeById(employeeId, employeeList);
-        $log.debug($scope.designations);
-        if(!$scope.employee.designation && designationsAvailable) {
-          $scope.employee.designation = $scope.designations[0];
+        if(!$scope.employee.designation) {
+          $scope.employee.designation = $scope.designations ? $scope.designations[0] : '';
         }
         $scope.employeeFormModel = angular.copy($scope.employee);
 
@@ -40,7 +39,7 @@ angular.module('employeeApp')
 
 
 
-      $scope.resetForm();
+      $scope.$watch('employees', $scope.resetForm());
     }
 
 

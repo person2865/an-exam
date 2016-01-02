@@ -1,6 +1,7 @@
 <div>
 
-    <h2>{{heading}}</h2>
+    <h2 ng-show="employeeFormModel.id < 0">{{messages.headings.addEmployee}}</h2>
+    <h2 ng-hide="employeeFormModel.id < 0">{{messages.headings.editEmployee}}</h2>
 
     <div class="notification-panel">
         <p ng-if="formInvalid" class="bg-danger">Test test test</p>
