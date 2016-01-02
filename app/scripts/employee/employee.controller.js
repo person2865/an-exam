@@ -6,40 +6,28 @@ angular.module('employeeApp')
 
     function ($scope, $log, EmployeeService) {
       $scope.employees = [];
-      $scope.employeeListRecieved = false;
-      $scope.designationsRecieved = false;
+      $scope.employeeListReceived = false;
+      $scope.designationsReceived = false;
+      $scope.messagesReceived = false;
 
-      $scope.deleteEmployee = function (id) {
-        var deletedEmployee = null;
-        $scope.employees.forEach(function (emp) {
-          if (emp.id === id) {
-            deletedEmployee = emp;
-            return false;
-          }
-        });
-        $scope.employees = EmployeeService.deleteEmployee(deletedEmployee, $scope.employees);
-      };
-
-      EmployeeService.getEmployees()
-        .then(function (response) {
-          if (angular.isArray(response) && response.length > 0) {
-            $scope.employees = response;
-            $scope.employeeListRecieved = true;
+      EmployeeService.fetchMessages()
+        .then(function (data) {
+          if (angular.isDefined(data)) {
+            $scope.messages = data;
+            $scope.messagesReceived = true;
           } else {
-            throw 'Failed to get employees.';
+            throw 'Failed to get messages.';
           }
         })
         .catch(function (error) {
-          $log.debug('Failed! error = ', error);
-          $scope.employees = [];
-          $scope.employeeListRecieved = false;
+          $log.debug(error);
         });
 
-      EmployeeService.getDesignations()
+      EmployeeService.fetchDesignations()
         .then(function (data) {
           if (angular.isArray(data) && data.length > 0) {
             $scope.designations = data;
-            $scope.designationsRecieved = true;
+            $scope.designationsReceived = true;
           } else {
             throw 'Failed to get designations';
           }
@@ -49,6 +37,25 @@ angular.module('employeeApp')
           $scope.designations = [];
           $scope.designationsRecieved = false;
         });
+
+      EmployeeService.fetchEmployees()
+        .then(function (data) {
+          if (angular.isArray(data) && data.length > 0) {
+            $scope.employees = data;
+            $scope.employeeListReceived = true;
+          } else {
+            throw 'Failed to get employees.';
+          }
+        })
+        .catch(function (error) {
+          $log.debug(error);
+        });
+
+      $scope.deleteEmployee = function (id) {
+        var employeeList = $scope.employees,
+          deletedEmployee = EmployeeService.getEmployeeById(id, employeeList);
+        $scope.employees = EmployeeService.deleteEmployee(deletedEmployee, employeeList);
+      };
     }
   ]);
 

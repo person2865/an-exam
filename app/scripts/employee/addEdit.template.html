@@ -19,17 +19,31 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="middle-name">Middle Name</label>
-                <input ng-model="employeeFormModel.name.middle" type="text" class="form-control" id="middle-name" placeholder="Middle name (optional)">
+                <input ng-model="employeeFormModel.name.middle"
+                       type="text"
+                       class="form-control"
+                       id="middle-name"
+                       placeholder="Middle name (optional)">
             </div>
             <div class="form-group col-md-4">
                 <label for="last-name">Last Name *</label>
-                <input ng-model="employeeFormModel.name.last" type="text" class="form-control" id="last-name" placeholder="Last name">
+                <input ng-model="employeeFormModel.name.last"
+                       type="text"
+                       class="form-control"
+                       id="last-name"
+                       placeholder="Last name"
+                       required>
             </div>
         </div>
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="age">Age *</label>
-                <input ng-model="employeeFormModel.age" type="number" class="form-control" id="age" placeholder="Age">
+                <input ng-model="employeeFormModel.age"
+                       type="number"
+                       class="form-control"
+                       id="age"
+                       placeholder="Age"
+                       required>
             </div>
         </div>
         <div class="row">
@@ -38,7 +52,8 @@
                 <select ng-model="employeeFormModel.designation"
                         ng-options="item as item for item in designations"
                         class="form-control"
-                        id="designation">
+                        id="designation"
+                        required>
                 </select>
             </div>
             <div class="form-group col-md-4">
@@ -48,8 +63,6 @@
                        class="form-control"
                        id="salary"
                        placeholder="Salary"
-                       ng-min="30000"
-                       ng-max="80000"
                        required>
             </div>
         </div>
@@ -57,32 +70,42 @@
             <div class="col-md-4">
                 <button type="submit"
                         class="btn btn-primary">
-                            Submit
-                </button>&nbsp;
+                    Submit
+                </button>
+                &nbsp;
 
                 <a class="btn btn-default"
-                    role="button"
-                    alt="Reset Form"
-                    ng-click="resetForm()">
-                        Reset
+                   role="button"
+                   alt="Reset Form"
+                   ng-click="resetForm()">
+                    Reset
                 </a>
-                
+
             </div>
             <div class="col-md-4 col-md-offset-4 text-right">
                 <a class="btn btn-danger"
-                    href="#"
-                    role="button"
-                    alt="Call add new employee">
-                        Cancel
+                   href="#"
+                   role="button"
+                   alt="Call add new employee">
+                    Cancel
                 </a>
             </div>
         </div>
-        
+
     </form>
 </div>
-<br>
-EmployeeFormModel = {{ employeeFormModel | json }}
-<br>
-Employee = {{ employee | json }}
-<br>
-Employee List = {{ employees | json }}
+
+
+<div class="addEditScope">
+    <h3>AddEdit Template Scope</h3>
+
+    <p>EmployeeFormModel = {{ employeeFormModel | json }}</p>
+
+    <p>Employee = {{ employee | json }}</p>
+
+    <p>Employee List = {{ employees | json }}</p>
+
+    <p>Designations = {{ designations | json }}</p>
+
+    <p>Messages = {{ messages | json }}</p>
+</div>
