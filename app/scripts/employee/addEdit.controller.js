@@ -19,7 +19,6 @@ angular.module('employeeApp')
           $scope.employee.designation = $scope.designations ? $scope.designations[0] : 'Consultant';
         }
         $scope.employeeFormModel = angular.copy($scope.employee);
-
       };
 
       $scope.submitEmployee = function () {

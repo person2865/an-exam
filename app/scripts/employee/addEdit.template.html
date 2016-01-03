@@ -18,6 +18,12 @@
         </p>
         <p ng-show="employeeForm.salary.$dirty && employeeForm.salary.$invalid" class="help-inline bg-danger">
             {{ messages.errors.salary }}
+            <span ng-if="employeeFormModel.designation === 'Consultant'">{{ messages.errors.salaryConsultant }}</span>
+            <span ng-if="employeeFormModel.designation === 'Snr. Consultant'">{{ messages.errors.salarySnrConsultant }}</span>
+            <span ng-if="employeeFormModel.designation === 'Lead'">{{ messages.errors.salaryLead }}</span>
+            <span ng-if="employeeFormModel.designation === 'Asst. Manager'">{{ messages.errors.salaryAsstManager }}</span>
+            <span ng-if="employeeFormModel.designation === 'Manager'">{{ messages.errors.salaryManager }}</span>
+            <span ng-if="employeeFormModel.designation === 'Snr. Manager'">{{ messages.errors.salarySnrManager }}</span>
         </p>
     </div>
 
@@ -103,12 +109,12 @@
                 </button>
                 &nbsp;
 
-                <a class="btn btn-default"
-                   role="button"
+                <button class="btn btn-default"
+                   type="reset"
                    alt="Reset Form"
                    ng-click="resetForm()">
                     Reset
-                </a>
+                </button>
 
             </div>
             <div class="col-md-4 col-md-offset-4 text-right">
