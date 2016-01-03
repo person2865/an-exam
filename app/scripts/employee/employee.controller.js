@@ -10,7 +10,7 @@ angular.module('employeeApp')
       $scope.designationsReceived = false;
       $scope.messagesReceived = false;
 
-      function loadDomainData() {
+      $scope.loadDomainData = function () {
         EmployeeService.fetchMessages()
           .then(function (data) {
             if (angular.isDefined(data)) {
@@ -51,7 +51,7 @@ angular.module('employeeApp')
           .catch(function (error) {
             $log.debug(error);
           });
-      }
+      };
 
       $scope.deleteEmployee = function (id) {
         var employeeList = $scope.employees,
@@ -59,7 +59,7 @@ angular.module('employeeApp')
         $scope.employees = EmployeeService.deleteEmployee(deletedEmployee, employeeList);
       };
 
-      loadDomainData();
+      $scope.loadDomainData();
     }
   ]);
 

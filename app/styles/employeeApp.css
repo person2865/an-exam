@@ -15,19 +15,3 @@ body {
 .notification-panel p {
     padding: 5px;
 }
-
-.addEditScope {
-    width: 400px;
-    position: absolute;
-    top: 100px;
-    left: 77%;
-    border: 1px solid black;
-}
-
-.tableScope {
-    width: 400px;
-    position: absolute;
-    top: 100px;
-    left: 1%;
-    border: 1px solid black;
-}

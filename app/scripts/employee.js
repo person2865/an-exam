@@ -10,9 +10,9 @@ employeeApp.config(function($stateProvider, $urlRouterProvider) {
             controller: 'EmployeeMainController'
         })
         .state('home.edit', {
-            url: '/edit/{employeeId}',
+            url: '/edit',
             params: {
-                employeeId: null
+                employeeId: -1
             },
             templateUrl: 'scripts/employee/addEdit.template.html',
             controller: 'EmployeeAddEditController'
